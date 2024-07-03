@@ -11,7 +11,7 @@ Router _$AuthServerRouter(AuthServer service) {
   router.add(
     'GET',
     r'/',
-    service.scmApiServer,
+    service.authServer,
   );
   router.mount(
     r'/auth',
