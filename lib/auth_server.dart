@@ -4,6 +4,8 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+//Routes
+part 'auth/auth.dart';
 part 'auth_server.g.dart';
 
 class AuthServer {
@@ -11,6 +13,9 @@ class AuthServer {
   Future<Response> scmApiServer(Request request) async {
     return Response.ok("AUTH SERVER");
   }
+
+  @Route.mount('/auth')
+  Router get _auth => Auth().router;
 
   @Route.all('/<ignored|.*>')
   Response _notFound(Request request) => Response.notFound('Page not found');
