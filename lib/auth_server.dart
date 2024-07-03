@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dotenv/dotenv.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
@@ -26,6 +27,7 @@ class AuthServer {
 void startAuthServer() async {
   final service = AuthServer();
   final host = InternetAddress.anyIPv4;
+  var env = DotEnv(includePlatformEnvironment: true)..load();
 
   Middleware handleCors() {
     const corsHeaders = {
