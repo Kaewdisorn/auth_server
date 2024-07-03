@@ -10,7 +10,7 @@ part 'auth_server.g.dart';
 
 class AuthServer {
   @Route.get('/')
-  Future<Response> scmApiServer(Request request) async {
+  Future<Response> authServer(Request request) async {
     return Response.ok("AUTH SERVER");
   }
 
