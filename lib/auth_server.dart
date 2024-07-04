@@ -5,9 +5,14 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import 'common/jwt.dart';
+
 //Routes
-part 'auth/auth.dart';
+part 'routes/auth.dart';
 part 'auth_server.g.dart';
+
+// ignore: prefer_typing_uninitialized_variables
+var env;
 
 class AuthServer {
   @Route.get('/')
@@ -27,7 +32,7 @@ class AuthServer {
 void startAuthServer() async {
   final service = AuthServer();
   final host = InternetAddress.anyIPv4;
-  var env = DotEnv(includePlatformEnvironment: true)..load();
+  env = DotEnv(includePlatformEnvironment: true)..load();
 
   Middleware handleCors() {
     const corsHeaders = {

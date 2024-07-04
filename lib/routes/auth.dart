@@ -3,6 +3,7 @@ part of '../auth_server.dart';
 class Auth {
   @Route.get('/')
   Future<Response> auth(Request request) async {
+    getJWT(env);
     return Response.ok("AUTH ROUTE");
   }
 
